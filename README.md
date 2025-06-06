@@ -37,10 +37,12 @@ pip install fastapi uvicorn osmnx sqlalchemy mysql-connector-python python-doten
 Instale as dependências do frontend:
 npm install
 
-
+---
 ## ▶️ Execução
 
+2. **Comandos para inicio do projeto**:
 
+```bash
 🧠 Backend (FastAPI)
 Na raiz do projeto, execute:
 uvicorn main:app --reload --port 5000
