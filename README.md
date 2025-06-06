@@ -38,7 +38,7 @@ Instale as dependências do frontend:
 npm install
 
 
-▶️ Execução
+## ▶️ Execução
 
 
 🧠 Backend (FastAPI)
