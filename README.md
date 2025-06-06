@@ -31,7 +31,7 @@ source venv/bin/activate
 
 
 Instale as dependências do backend:
-pip install fastapi uvicorn osmnx sqlalchemy mysql-connector-python python-dotenv
+pip install fastapi uvicorn osmnx flask scikit-learn pydantic typing folium networkx 
 
 
 Instale as dependências do frontend:
