@@ -1,0 +1,310 @@
+/* Importação de uma fonte moderna do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Definição de variáveis de cores para fácil manutenção - Tema Escuro */
+  --background-dark: #1a1a1a; /* Fundo principal quase preto */
+  --card-background: #2c2c2c; /* Fundo dos cards/painéis */
+  --primary-color: #61dafb; /* Azul/ciano vibrante (inspirado em React) */
+  --primary-hover-color: #21a1f1; /* Tom mais escuro para hover */
+  --text-light: #e0e0e0; /* Texto claro */
+  --text-muted: #a0a0a0; /* Texto secundário/cinza */
+  --border-dark: #444; /* Borda para elementos no tema escuro */
+  --shadow-dark-light: rgba(0, 0, 0, 0.4); /* Sombra leve para elementos escuros */
+  --shadow-dark-medium: rgba(0, 0, 0, 0.6); /* Sombra mais forte para elementos escuros */
+  --error-color: #ff6b6b; /* Vermelho vibrante para erros */
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-dark); /* Fundo preto */
+  font-family: 'Inter', sans-serif;
+  color: var(--text-light); /* Cor do texto padrão */
+  line-height: 1.6;
+}
+
+.App {
+  /* O container principal do aplicativo */
+  background-color: var(--card-background); /* Fundo do card principal */
+  border-radius: 12px; /* Cantos arredondados */
+  box-shadow: 0 8px 30px var(--shadow-dark-medium); /* Sombra mais pronunciada */
+  padding: 40px;
+  max-width: 900px; /* Largura máxima para o layout inicial */
+  margin: 40px auto; /* Centraliza */
+  text-align: center;
+  transition: all 0.5s ease-in-out; /* Transição suave para mudanças de layout */
+  display: flex; /* Usar flexbox para alinhar conteúdo verticalmente */
+  flex-direction: column;
+  min-height: calc(100vh - 80px); /* Altura mínima para o .App */
+  box-sizing: border-box; /* Garante que padding não adicione largura */
+}
+
+h1 {
+  font-size: 2.8rem; /* Título maior */
+  color: var(--primary-color); /* Cor do título principal */
+  margin-bottom: 40px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.3); /* Um leve brilho no título */
+}
+
+/* Container para o conteúdo principal (formulário + mapa) */
+.main-content {
+  display: flex;
+  flex-direction: column; /* Padrão: coluna (tudo centralizado) */
+  align-items: center; /* Centraliza horizontalmente */
+  gap: 30px; /* Espaço entre os elementos */
+  width: 100%;
+}
+
+/* Estilo para quando o mapa estiver ativo (layout de duas colunas) */
+.main-content.map-layout-active {
+  flex-direction: row; /* Muda para linha (duas colunas) */
+  align-items: flex-start; /* Alinha no topo */
+  justify-content: center; /* Centraliza as colunas */
+  max-width: 1200px; /* Aumenta a largura máxima para o layout de mapa */
+  margin: 0 auto; /* Centraliza o container de layout */
+  gap: 40px; /* Mais espaço entre as colunas */
+  padding: 0 20px; /* Padding nas laterais quando em duas colunas */
+}
+
+/* Painel de opções (formulário) */
+.options-panel {
+  flex: 0 0 350px; /* Largura fixa para o painel de opções */
+  padding: 25px;
+  background-color: var(--card-background); /* Mesma cor de fundo do .App */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--shadow-dark-light); /* Sombra suave */
+  text-align: left; /* Alinha o texto do formulário à esquerda */
+  height: fit-content; /* Ajusta a altura ao conteúdo */
+  transition: all 0.5s ease-in-out; /* Transição para mudanças de layout */
+  box-sizing: border-box; /* Garante que padding não adicione largura */
+}
+
+/* Painel de exibição do mapa */
+.map-display-panel {
+  flex: 1; /* O mapa ocupa o espaço restante */
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--shadow-dark-light);
+  overflow: hidden; /* Garante que o iframe respeite o border-radius */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px; /* Padding interno para o mapa */
+  transition: all 0.5s ease-in-out;
+  box-sizing: border-box; /* Garante que padding não adicione largura */
+}
+
+.map-display-panel h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+
+iframe {
+  border: none;
+  width: 100%;
+  height: 600px; /* Altura fixa para o iframe do mapa */
+  display: block;
+  border-radius: 8px; /* Cantos arredondados para o mapa dentro do painel */
+}
+
+/* --- Elementos de Formulário --- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-light);
+  font-size: 1.05rem;
+}
+
+select,
+input[type="number"] {
+  width: 100%; /* Define largura total e deixa o padding ser incluído pelo box-sizing */
+  padding: 12px;
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text-light);
+  background-color: #3b3b3b; /* Fundo mais escuro para inputs */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura */
+}
+
+select:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(97, 218, 251, 0.25);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--card-background); /* Cor de texto que contraste no botão */
+  padding: 14px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-top: 20px;
+  width: 100%; /* Botão ocupa a largura total do painel */
+  box-sizing: border-box; /* Garante que padding seja incluído na largura */
+}
+
+button:hover {
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px var(--shadow-dark-medium);
+}
+
+button:disabled {
+  background-color: var(--border-dark);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error {
+  color: var(--error-color);
+  background-color: rgba(255, 107, 107, 0.1);
+  border: 1px solid var(--error-color);
+  border-radius: 8px;
+  padding: 10px 15px;
+  margin-top: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Estilo para a mensagem de carregamento */
+.App p {
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* --- Responsividade --- */
+
+/* Ajustes gerais para telas médias a grandes */
+@media (min-width: 993px) {
+  .App {
+    padding: 50px; /* Mais padding para telas maiores */
+  }
+
+  .main-content.map-layout-active {
+    padding: 0 40px; /* Mais padding nas laterais quando em duas colunas em telas maiores */
+  }
+
+  .options-panel {
+    flex: 0 0 400px; /* Ligeiramente mais largo para telas maiores */
+  }
+
+  iframe {
+    height: 700px; /* Altura maior para o mapa em telas grandes */
+  }
+}
+
+/* Para telas entre 769px e 992px (tablets em modo paisagem e desktops menores) */
+@media (max-width: 992px) {
+  .App {
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 760px; /* Limita a largura para evitar que fique muito esticado */
+  }
+
+  h1 {
+    font-size: 2.4rem; /* Ajusta o tamanho do título */
+    margin-bottom: 30px;
+  }
+
+  .main-content.map-layout-active {
+    flex-direction: column; /* Volta para coluna em telas menores */
+    align-items: center;
+    max-width: 760px; /* Mantém a largura máxima consistente */
+    padding: 0 20px; /* Padding nas laterais */
+  }
+
+  .options-panel,
+  .map-display-panel {
+    flex: none; /* Remove flex grow/shrink */
+    width: 100%; /* Ocupa a largura total */
+    max-width: 480px; /* Largura máxima para os painéis em coluna */
+  }
+
+  iframe {
+    height: 450px; /* Ajusta a altura do mapa */
+  }
+}
+
+/* Para telas entre 577px e 768px (tablets em modo retrato) */
+@media (max-width: 768px) {
+  .App {
+    padding: 25px;
+    margin: 25px auto;
+    max-width: 90%; /* Usa porcentagem para maior flexibilidade */
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+
+  .options-panel,
+  .map-display-panel {
+    padding: 20px;
+  }
+
+  iframe {
+    height: 400px;
+  }
+}
+
+/* Para telas menores que 576px (celulares) */
+@media (max-width: 576px) {
+  .App {
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    min-height: calc(100vh - 40px); /* Ajusta altura mínima */
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .options-panel,
+  .map-display-panel {
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%; /* Garante que ocupem a largura total disponível */
+    max-width: none; /* Remove a largura máxima para celulares */
+  }
+
+  button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  iframe {
+    height: 300px;
+  }
+
+  select,
+  input[type="number"] {
+    padding: 10px; /* Menos padding para inputs em telas pequenas */
+    font-size: 0.95rem;
+  }
+}
